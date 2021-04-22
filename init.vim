@@ -78,3 +78,5 @@ map <C-n> :NERDTreeToggle<CR>
 " Buffer via Tab and Shift-Tab
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
+
+
