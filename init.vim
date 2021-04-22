@@ -1,5 +1,7 @@
 " christopher warner
-" .vimrc <cwarner@kernelcode.com>
+" init.vim <cwarner@kernelcode.com>
+" for neovim
+"
 syntax on
 set termguicolors
 set guifont=Hack\ Regular:h14
@@ -18,6 +20,7 @@ let g:lightline = {
       \ 'colorscheme': 'PaperColor_light',
       \ }
 
+let g:fugitive_git_executable = '/usr/bin/git'
 filetype on
 filetype indent on
 filetype plugin on
@@ -52,6 +55,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Smooth scrolling
 Plug 'psliwka/vim-smoothie'
 
+" Fugitive
+Plug 'tpope/vim-fugitive'
+
 " Initialize plugin system
 call plug#end()
 
@@ -63,7 +69,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Start in first window
 autocmd VimEnter * wincmd l
 " Last window is NERDTree.. close
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 "
 "
 "" Control-N Toggle
@@ -72,3 +78,5 @@ map <C-n> :NERDTreeToggle<CR>
 " Buffer via Tab and Shift-Tab
 :nnoremap <Tab> :bnext<CR>
 :nnoremap <S-Tab> :bprevious<CR>
+
+
